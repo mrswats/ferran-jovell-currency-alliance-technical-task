@@ -5,13 +5,21 @@ description = ""
 readme = "README.md"
 requires-python = ">=3.14.1"
 license = { file = "LICENSE" }
-dependencies = []
+dependencies = [
+    "django",
+    "djangorestframework",
+    "drf_spectacular",
+]
 
 [project.optional-dependencies]
 test = [
     "covdefaults",
+    "django-stubs[compatible-mypy]",
+    "djangorestframework-stubs[compatible-mypy]",
+    "mypy",
     "pytest",
     "pytest-cov",
+    "pytest-django",
     "pytest-randomly",
     "pytest-xdist",
     "time-machine",
@@ -27,17 +35,36 @@ find = {}
 [tool.autoflake]
 recursive = true
 
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "testing.settings"
+
 [tool.mypy]
 files = "."
-ignore_missing_imports = true
 strict = true
+ignore_missing_imports = true
 exclude = [
+    "asgi.py",
+    "manage.py",
     "tests/",
+    "wsgi.py",
 ]
+plugins = [
+    "mypy_django_plugin.main",
+    "mypy_drf_plugin.main",
+]
+
+[tool.django-stubs]
+django_settings_module = "testing.settings"
 
 [tool.coverage.run]
 plugins = ["covdefaults"]
-omit = []
+omit = [
+    "manage.py",
+    "asgi.py",
+    "wsgi.py",
+    "settings.py",
+    "tests/",
+]
 
 [tool.coverage.html]
 directory = "artifacts/htmlcov/"
