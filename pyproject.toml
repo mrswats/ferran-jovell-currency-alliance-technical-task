@@ -23,7 +23,6 @@ test = [
     "pytest-django",
     "pytest-randomly",
     "pytest-xdist",
-    "time-machine",
 ]
 
 [build-system]

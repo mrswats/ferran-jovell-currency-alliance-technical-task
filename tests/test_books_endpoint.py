@@ -12,7 +12,6 @@ def the_cat_data(author):
         "title": "The Cat",
         "date_published": "1843-08-19",
         "language": "english",
-        "isbn_10": "6057876415",
         "isbn_13": "9786057876416",
     }
 
@@ -97,7 +96,6 @@ def test_books_list_data(list_books, book):
         {
             "author": 1,
             "date_published": "2024-09-04",
-            "isbn_10": "2048742971",
             "isbn_13": "9782048742975",
             "language": "english",
             "title": "The Raven",
@@ -144,7 +142,6 @@ def test_books_retrieve_data(retrieve_books, book):
         "author": 1,
         "date_published": "2024-09-04",
         "isbn_13": "9782048742975",
-        "isbn_10": "2048742971",
         "language": "english",
         "title": "The Raven",
     }
@@ -169,7 +166,6 @@ def test_books_update_status_code(update_books, book):
     [
         ("date_published", "2020-03-14"),
         ("isbn_13", "1234567890123"),
-        ("isbn_10", "1234567890"),
         ("language", "somalian"),
         ("title", "foo"),
     ],

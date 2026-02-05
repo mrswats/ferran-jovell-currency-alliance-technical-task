@@ -22,7 +22,6 @@ class BookSerializer(serializers.ModelSerializer[models.Book]):
         fields = (
             "author",
             "date_published",
-            "isbn_10",
             "isbn_13",
             "language",
             "title",

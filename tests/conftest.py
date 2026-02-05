@@ -26,7 +26,6 @@ def book(author: models.Author) -> models.Book:
         author=author,
         title="The Raven",
         isbn_13="9782048742975",
-        isbn_10="2048742971",
         date_published=datetime(2024, 9, 4),
         language="english",
     )
