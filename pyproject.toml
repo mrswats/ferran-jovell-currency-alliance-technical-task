@@ -1,5 +1,5 @@
 [project]
-name = "awesome-python-project"
+name = "currency-alliance-alexandria"
 version = "0.1.0"
 description = ""
 readme = "README.md"
@@ -54,7 +54,7 @@ plugins = [
 ]
 
 [tool.django-stubs]
-django_settings_module = "testing.settings"
+django_settings_module = "alexandria.settings.testing"
 
 [tool.coverage.run]
 plugins = ["covdefaults"]

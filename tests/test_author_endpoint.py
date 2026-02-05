@@ -153,9 +153,7 @@ def test_authors_create_data(create_authors, author_data):
 
 
 @pytest.mark.django_db
-def test_authors_create_number_of_queries(
-    create_authors, author_data, django_assert_num_queries
-):
+def test_authors_create_number_of_queries(create_authors, author_data, django_assert_num_queries):
     with django_assert_num_queries(1):
         create_authors(author_data)
 
@@ -181,9 +179,7 @@ def test_authors_update_data(update_authors, author, key, value):
 
 
 @pytest.mark.django_db
-def test_authors_update_number_of_queries(
-    update_authors, author, django_assert_num_queries
-):
+def test_authors_update_number_of_queries(update_authors, author, django_assert_num_queries):
     with django_assert_num_queries(2):
         update_authors(author.pk, {})
 
@@ -195,8 +191,6 @@ def test_authors_delete_status_code(delete_authors, author):
 
 
 @pytest.mark.django_db
-def test_authors_delete_number_of_queries(
-    delete_authors, author, django_assert_num_queries
-):
+def test_authors_delete_number_of_queries(delete_authors, author, django_assert_num_queries):
     with django_assert_num_queries(3):
         delete_authors(author.pk)
