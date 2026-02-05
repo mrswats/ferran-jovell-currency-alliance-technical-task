@@ -68,11 +68,11 @@ def delete_authors(client, authors_detail_url):
 
 
 def test_authors_url(authors_url):
-    assert authors_url == "/api/authors/"
+    assert authors_url == "/authors/"
 
 
 def test_authors_detail_url(authors_detail_url):
-    assert authors_detail_url("author-id") == "/api/authors/author-id/"
+    assert authors_detail_url("author-id") == "/authors/author-id/"
 
 
 @pytest.mark.django_db

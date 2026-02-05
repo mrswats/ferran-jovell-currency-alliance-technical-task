@@ -6,13 +6,13 @@ from drf_spectacular.views import SpectacularSwaggerView
 urlpatterns = [
     path(
         "",
-        SpectacularSwaggerView.as_view(url_name="docs-schema"),
-        name="docs-html",
+        SpectacularSwaggerView.as_view(url_name="docs:schema"),
+        name="html",
     ),
     path(
         "openapi.yaml",
         SpectacularAPIView.as_view(),
-        name="docs-schema",
+        name="schema",
     ),
 ]
 

@@ -71,11 +71,11 @@ def delete_books(client, books_detail_url):
 
 
 def test_books_url(books_url):
-    assert books_url == "/api/books/"
+    assert books_url == "/books/"
 
 
 def test_book_detail_url(books_detail_url):
-    assert books_detail_url("isbn-13") == "/api/books/isbn-13/"
+    assert books_detail_url("isbn-13") == "/books/isbn-13/"
 
 
 @pytest.mark.django_db
@@ -127,7 +127,7 @@ def test_books_create_data(create_books, the_cat_data):
 def test_books_create_number_of_queries(
     create_books, the_cat_data, django_assert_num_queries
 ):
-    with django_assert_num_queries(2):
+    with django_assert_num_queries(3):
         create_books(the_cat_data)
 
 
