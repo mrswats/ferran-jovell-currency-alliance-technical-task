@@ -13,8 +13,8 @@ class Author(models.Model):
 class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="books")
     title = models.CharField(max_length=100)
-    isdn_10 = models.CharField(max_length=10)
-    isdn_13 = models.CharField(max_length=13)
+    isbn_10 = models.CharField(max_length=10)
+    isbn_13 = models.CharField(max_length=13)
     language = models.CharField(max_length=50)
     date_published = models.DateField()
 

@@ -12,4 +12,4 @@ class AuthorViewSet(viewsets.ModelViewSet[models.Author]):
 class BookViewSet(viewsets.ModelViewSet[models.Book]):
     queryset = models.Book.objects.select_related("author")
     serializer_class = serializers.BookSerializer
-    lookup_field = "isdn_13"
+    lookup_field = "isbn_13"

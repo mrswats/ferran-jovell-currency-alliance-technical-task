@@ -12,8 +12,8 @@ def the_cat_data(author):
         "title": "The Cat",
         "date_published": "1843-08-19",
         "language": "english",
-        "isdn_10": "6057876415",
-        "isdn_13": "9786057876416",
+        "isbn_10": "6057876415",
+        "isbn_13": "9786057876416",
     }
 
 
@@ -25,7 +25,7 @@ def books_url():
 @pytest.fixture
 def books_detail_url():
     def _(book_id: str) -> str:
-        return reverse("api:books-detail", kwargs={"isdn_13": book_id})
+        return reverse("api:books-detail", kwargs={"isbn_13": book_id})
 
     return _
 
@@ -75,7 +75,7 @@ def test_books_url(books_url):
 
 
 def test_book_detail_url(books_detail_url):
-    assert books_detail_url("isdn-13") == "/api/books/isdn-13/"
+    assert books_detail_url("isbn-13") == "/api/books/isbn-13/"
 
 
 @pytest.mark.django_db
@@ -91,14 +91,14 @@ def test_books_empty_data(list_books):
 
 
 @pytest.mark.django_db
-def test_books_data(list_books, book):
+def test_books_list_data(list_books, book):
     response = list_books()
     assert response.json()["results"] == [
         {
             "author": 1,
             "date_published": "2024-09-04",
-            "isdn_13": "9782048742975",
-            "isdn_10": "2048742971",
+            "isbn_10": "2048742971",
+            "isbn_13": "9782048742975",
             "language": "english",
             "title": "The Raven",
         }
@@ -124,68 +124,75 @@ def test_books_create_data(create_books, the_cat_data):
 
 
 @pytest.mark.django_db
-def test_books_create_number_of_queries(create_books, the_cat_data, django_assert_num_queries):
+def test_books_create_number_of_queries(
+    create_books, the_cat_data, django_assert_num_queries
+):
     with django_assert_num_queries(2):
         create_books(the_cat_data)
 
 
 @pytest.mark.django_db
 def test_books_retrieve_status_code(retrieve_books, book):
-    response = retrieve_books(book.isdn_13)
+    response = retrieve_books(book.isbn_13)
     assert response.status_code == HTTPStatus.OK
 
 
 @pytest.mark.django_db
 def test_books_retrieve_data(retrieve_books, book):
-    response = retrieve_books(book.isdn_13)
+    response = retrieve_books(book.isbn_13)
     assert response.json() == {
         "author": 1,
         "date_published": "2024-09-04",
-        "isdn_13": "9782048742975",
-        "isdn_10": "2048742971",
+        "isbn_13": "9782048742975",
+        "isbn_10": "2048742971",
         "language": "english",
         "title": "The Raven",
     }
 
 
 @pytest.mark.django_db
-def test_books_retrieve_number_of_queries(retrieve_books, book, django_assert_num_queries):
+def test_books_retrieve_number_of_queries(
+    retrieve_books, book, django_assert_num_queries
+):
     with django_assert_num_queries(1):
-        retrieve_books(book.isdn_13)
+        retrieve_books(book.isbn_13)
 
 
 @pytest.mark.django_db
 def test_books_update_status_code(update_books, book):
-    response = update_books(book.isdn_13, {})
+    response = update_books(book.isbn_13, {})
     assert response.status_code == HTTPStatus.OK
 
 
+@pytest.mark.parametrize(
+    "key, value",
+    [
+        ("date_published", "2020-03-14"),
+        ("isbn_13", "1234567890123"),
+        ("isbn_10", "1234567890"),
+        ("language", "somalian"),
+        ("title", "foo"),
+    ],
+)
 @pytest.mark.django_db
-def test_books_update_data(update_books, book):
-    response = update_books(book.isdn_13, {})
-    assert response.json() == {
-        "author": 1,
-        "date_published": "2024-09-04",
-        "isdn_13": "9782048742975",
-        "isdn_10": "2048742971",
-        "language": "english",
-        "title": "The Raven",
-    }
+def test_books_update_data(update_books, book, key, value):
+    response = update_books(book.isbn_13, {key: value})
+    assert response.json().get(key) == value
 
 
 @pytest.mark.django_db
 def test_books_update_number_of_queries(update_books, book, django_assert_num_queries):
     with django_assert_num_queries(2):
-        update_books(book.isdn_13, {})
+        update_books(book.isbn_13, {})
 
 
 @pytest.mark.django_db
 def test_books_status_code(delete_books, book):
-    response = delete_books(book.isdn_13)
+    response = delete_books(book.isbn_13)
     assert response.status_code == HTTPStatus.NO_CONTENT
 
 
 @pytest.mark.django_db
 def test_books_delete_number_of_queries(delete_books, book, django_assert_num_queries):
     with django_assert_num_queries(2):
-        delete_books(book.isdn_13)
+        delete_books(book.isbn_13)

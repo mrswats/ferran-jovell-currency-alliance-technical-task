@@ -153,7 +153,9 @@ def test_authors_create_data(create_authors, author_data):
 
 
 @pytest.mark.django_db
-def test_authors_create_number_of_queries(create_authors, author_data, django_assert_num_queries):
+def test_authors_create_number_of_queries(
+    create_authors, author_data, django_assert_num_queries
+):
     with django_assert_num_queries(1):
         create_authors(author_data)
 
@@ -164,19 +166,24 @@ def test_authors_update_status_code(update_authors, author):
     assert response.status_code == HTTPStatus.OK
 
 
+@pytest.mark.parametrize(
+    "key, value",
+    {
+        ("birth_date", "1808-01-19"),
+        ("name", "Poe"),
+        ("nationality", "english"),
+    },
+)
 @pytest.mark.django_db
-def test_authors_update_data(update_authors, author):
-    response = update_authors(author.pk, {})
-    assert response.json() == {
-        "birth_date": "1809-01-19",
-        "id": 1,
-        "name": "Edgar Allan Poe",
-        "nationality": "american",
-    }
+def test_authors_update_data(update_authors, author, key, value):
+    response = update_authors(author.pk, {key: value})
+    assert response.json().get(key) == value
 
 
 @pytest.mark.django_db
-def test_authors_update_number_of_queries(update_authors, author, django_assert_num_queries):
+def test_authors_update_number_of_queries(
+    update_authors, author, django_assert_num_queries
+):
     with django_assert_num_queries(2):
         update_authors(author.pk, {})
 
@@ -188,6 +195,8 @@ def test_authors_delete_status_code(delete_authors, author):
 
 
 @pytest.mark.django_db
-def test_authors_delete_number_of_queries(delete_authors, author, django_assert_num_queries):
+def test_authors_delete_number_of_queries(
+    delete_authors, author, django_assert_num_queries
+):
     with django_assert_num_queries(3):
         delete_authors(author.pk)

@@ -25,8 +25,8 @@ def book(author: models.Author) -> models.Book:
     return models.Book.objects.create(
         author=author,
         title="The Raven",
-        isdn_13="9782048742975",
-        isdn_10="2048742971",
+        isbn_13="9782048742975",
+        isbn_10="2048742971",
         date_published=datetime(2024, 9, 4),
         language="english",
     )
