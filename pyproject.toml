@@ -37,7 +37,7 @@ find = {}
 recursive = true
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "testing.settings"
+DJANGO_SETTINGS_MODULE = "alexandria.settings.testing"
 
 [tool.mypy]
 files = "."
@@ -63,7 +63,7 @@ omit = [
     "manage.py",
     "asgi.py",
     "wsgi.py",
-    "settings.py",
+    "alexandria/settings/*.py",
     "tests/",
 ]
 

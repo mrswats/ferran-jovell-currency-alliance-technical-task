@@ -1,11 +1,7 @@
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-
-SECRET_KEY = "django-insecure-qhy)z4ko=oa^13ne6d*v5quol+@)b1*dvq52o@-!^pa9ja7ti1"
-
-DEBUG = True
 
 ALLOWED_HOSTS: list[str] = []
 
@@ -55,13 +51,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "alexandria.wsgi.application"
 
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "alexandria.db",
-    }
-}
 
 
 AUTH_PASSWORD_VALIDATORS = [
