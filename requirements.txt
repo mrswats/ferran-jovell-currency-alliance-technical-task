@@ -39,6 +39,8 @@ drf-spectacular==0.29.0
     # via awesome-python-project (pyproject.toml)
 execnet==2.1.2
     # via pytest-xdist
+gunicorn==25.0.1
+    # via awesome-python-project (pyproject.toml)
 inflection==0.5.1
     # via drf-spectacular
 iniconfig==2.3.0
@@ -57,7 +59,9 @@ mypy==1.19.1
 mypy-extensions==1.1.0
     # via mypy
 packaging==26.0
-    # via pytest
+    # via
+    #   gunicorn
+    #   pytest
 pathspec==1.0.4
     # via mypy
 pluggy==1.6.0

@@ -9,16 +9,21 @@ class AuthorSerializer(serializers.ModelSerializer[models.Author]):
         fields = (
             "id",
             "name",
+            "birth_date",
+            "nationality",
         )
 
 
 class BookSerializer(serializers.ModelSerializer[models.Book]):
-    author = AuthorSerializer()
+    author = serializers.PrimaryKeyRelatedField(queryset=models.Author.objects.all())
 
     class Meta:
         model = models.Book
         fields = (
-            "id",
-            "title",
             "author",
+            "date_published",
+            "isdn_10",
+            "isdn_13",
+            "language",
+            "title",
         )

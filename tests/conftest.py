@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import pytest
 from rest_framework import test
 
@@ -13,12 +15,18 @@ def client() -> test.APIClient:
 def author() -> models.Author:
     return models.Author.objects.create(
         name="Edgar Allan Poe",
+        birth_date=datetime(1809, 1, 19),
+        nationality="american",
     )
 
 
 @pytest.fixture
 def book(author: models.Author) -> models.Book:
     return models.Book.objects.create(
-        title="The Raven",
         author=author,
+        title="The Raven",
+        isdn_13="9782048742975",
+        isdn_10="2048742971",
+        date_published=datetime(2024, 9, 4),
+        language="english",
     )

@@ -9,6 +9,7 @@ dependencies = [
     "django",
     "djangorestframework",
     "drf_spectacular",
+    "gunicorn",
 ]
 
 [project.optional-dependencies]
