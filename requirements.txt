@@ -11,36 +11,36 @@ attrs==25.4.0
     #   jsonschema
     #   referencing
 covdefaults==2.3.0
-    # via awesome-python-project (pyproject.toml)
+    # via currency-alliance-alexandria (pyproject.toml)
 coverage[toml]==7.13.3
     # via
     #   covdefaults
     #   pytest-cov
 django==6.0.2
     # via
-    #   awesome-python-project (pyproject.toml)
+    #   currency-alliance-alexandria (pyproject.toml)
     #   django-stubs
     #   django-stubs-ext
     #   djangorestframework
     #   drf-spectacular
 django-stubs[compatible-mypy]==5.2.9
     # via
-    #   awesome-python-project (pyproject.toml)
+    #   currency-alliance-alexandria (pyproject.toml)
     #   djangorestframework-stubs
 django-stubs-ext==5.2.9
     # via django-stubs
 djangorestframework==3.16.1
     # via
-    #   awesome-python-project (pyproject.toml)
+    #   currency-alliance-alexandria (pyproject.toml)
     #   drf-spectacular
 djangorestframework-stubs[compatible-mypy]==3.16.8
-    # via awesome-python-project (pyproject.toml)
+    # via currency-alliance-alexandria (pyproject.toml)
 drf-spectacular==0.29.0
-    # via awesome-python-project (pyproject.toml)
+    # via currency-alliance-alexandria (pyproject.toml)
 execnet==2.1.2
     # via pytest-xdist
 gunicorn==25.0.1
-    # via awesome-python-project (pyproject.toml)
+    # via currency-alliance-alexandria (pyproject.toml)
 inflection==0.5.1
     # via drf-spectacular
 iniconfig==2.3.0
@@ -53,7 +53,7 @@ librt==0.7.8
     # via mypy
 mypy==1.19.1
     # via
-    #   awesome-python-project (pyproject.toml)
+    #   currency-alliance-alexandria (pyproject.toml)
     #   django-stubs
     #   djangorestframework-stubs
 mypy-extensions==1.1.0
@@ -68,23 +68,27 @@ pluggy==1.6.0
     # via
     #   pytest
     #   pytest-cov
+psycopg[binary]==3.3.2
+    # via currency-alliance-alexandria (pyproject.toml)
+psycopg-binary==3.3.2
+    # via psycopg
 pygments==2.19.2
     # via pytest
 pytest==9.0.2
     # via
-    #   awesome-python-project (pyproject.toml)
+    #   currency-alliance-alexandria (pyproject.toml)
     #   pytest-cov
     #   pytest-django
     #   pytest-randomly
     #   pytest-xdist
 pytest-cov==7.0.0
-    # via awesome-python-project (pyproject.toml)
+    # via currency-alliance-alexandria (pyproject.toml)
 pytest-django==4.11.1
-    # via awesome-python-project (pyproject.toml)
+    # via currency-alliance-alexandria (pyproject.toml)
 pytest-randomly==4.0.1
-    # via awesome-python-project (pyproject.toml)
+    # via currency-alliance-alexandria (pyproject.toml)
 pytest-xdist==3.8.0
-    # via awesome-python-project (pyproject.toml)
+    # via currency-alliance-alexandria (pyproject.toml)
 pyyaml==6.0.3
     # via drf-spectacular
 referencing==0.37.0

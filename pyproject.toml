@@ -10,6 +10,7 @@ dependencies = [
     "djangorestframework",
     "drf_spectacular",
     "gunicorn",
+    "psycopg[binary]",
 ]
 
 [project.optional-dependencies]

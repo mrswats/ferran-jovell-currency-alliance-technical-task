@@ -1,6 +1,6 @@
 import os
 
-from alexandria.settings import *  # noqa: F401,F403
+from alexandria.settings.base import *  # noqa: F401,F403
 
 
 DEBUG = False

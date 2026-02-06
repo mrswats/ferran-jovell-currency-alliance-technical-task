@@ -4,7 +4,9 @@ set -euo
 
 main () {
     python -m manage migrate
-    gunicorn "alexandria.wsgi:application"
+    python -m gunicorn \
+        --bind "0.0.0.0:8080" \
+        "alexandria.wsgi:application"
 }
 
 main "$@"
