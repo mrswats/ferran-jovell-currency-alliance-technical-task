@@ -3,9 +3,6 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
-ALLOWED_HOSTS: list[str] = []
-
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
