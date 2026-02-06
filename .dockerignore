@@ -1,0 +1,9 @@
+tests/
+.flake8
+.github/
+.pre-commit-config.yaml
+docker-compose.yml
+Dockerfile
+LICENSE
+README.md
+.git/
